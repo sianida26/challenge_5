@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BCR - Car Management Dashboard</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body class="max-w-screen min-h-screen overflow-x-hidden">
+
+  <div class="w-screen h-screen flex">
+
+    <%- include('partials/navbarBlue') %>
+
+      <div class="flex flex-col flex-grow h-screen">
+        <%- include('partials/header') %>
+
+          <div class="flex z-0 flex-[1_1_auto] overflow-y-auto">
+            <%- include("partials/navbarWhite") %>
+
+              <!-- main content -->
+              <div id="addCar" class="bg-gray w-full flex flex-col gap-5 p-5 overflow-y-scroll">
+                <div class="flex gap-1 items-center">
+                  <span class="font-bold text-xs">Cars</span>
+                  <i data-feather="chevron-right" height="1rem" stroke-width="3"></i>
+                  <span class="font-bold text-xs">List Car</span>
+                  <i data-feather="chevron-right" height="1rem" stroke-width="3"></i>
+                  <span class="font-light text-xs"><%= isEdit ? "Update Car Information" :  "Add New Car" %></span>
+                </div>
+                <h1 class="font-bold text-2xl"><%= isEdit ? "Update Car Information" :  "Add New Car" %></h1>
+                <div class="bg-white py-4 px-3 text-sm">
+                  <table>
+                      <input type="hidden" id="car-id" value="<%= isEdit ? car.id :  "" %>">
+                    <tr>
+                      <td class="w-48">Nama<sup class="text-red-500">*</sup></td>
+                      <td>
+                        <input value="<%= isEdit ? car.name :  "" %>" id="name" type="text" class="p-2 w-72 my-2 border border-neutral-2" placeholder="Avanza">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Sewa Per Hari <sup class="text-red-500">*</sup></td>
+                      <td>
+                        <input value="<%= isEdit ? car.price :  "" %>" id="price" type="text" class="p-2 w-72 my-2 border border-neutral-2" placeholder="Rp 0,-">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Ukuran <sup class="text-red-500">*</sup></td>
+                      <td class="relative flex flex-col py-2">
+                        <select value="<%= isEdit ? car.size :  "" %>" id="size" type="text" class="p-2 w-72 border border-neutral-2" placeholder="Small">
+                          <option value="0">Small</option>
+                          <option value="1">Medium</option>
+                          <option value="2">Large</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Foto <sup class="text-red-500">*</sup></td>
+                      <td class="relative flex flex-col py-2">
+                        <input disabled type="text" class="p-2 w-72 border border-neutral-2" placeholder="https://placeimg.com/640/480/any">
+                        <input type="file" accept="image/*" class="hidden" id="file">
+                        <button id="upload-button" class="absolute top-2 right-3 mt-2 text-neutral-3">
+                          <i data-feather="upload"></i>
+                        </button>
+                        <p class="text-neutral-3 text-xs mt-1">File size max. 2MB</p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="flex gap-4">
+                  <a href="/list-car"
+                    class="py-2 px-3 bg-white text-dark-blue-4 border-2 border-dark-blue-4 font-semibold rounded-sm">Cancel</a>
+                  <button id="submit"
+                    class="py-2 px-3 bg-dark-blue-4 text-white border-2 border-dark-blue-4 font-semibold rounded-sm">Save</button>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script src="/javascripts/formCar.js"></script>
+</body>
+
+</html>

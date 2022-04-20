@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BCR - Car Management Dashboard</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body class="max-w-screen min-h-screen overflow-x-hidden relative">
+
+  <div class="w-screen h-screen flex">
+
+    <%- include('partials/navbarBlue') %>
+
+      <div class="flex flex-col flex-grow h-screen">
+        <%- include('partials/header') %>
+
+          <div class="flex z-0 flex-[1_1_auto] overflow-y-auto">
+            <%- include("partials/navbarWhite") %>
+
+              <!-- main content -->
+              <div class="bg-gray w-full flex flex-col gap-5 p-5 overflow-y-scroll relative">
+
+                <!-- breadcrumb -->
+                <div class="flex gap-1 items-center">
+                  <span class="font-bold text-xs">Cars</span>
+                  <i data-feather="chevron-right" height="1rem" stroke-width="3"></i>
+                  <span class="font-light text-xs">List Car</span>
+                </div>
+
+                <!-- add button -->
+                <div class="flex justify-between">
+                  <span class="font-bold text-2xl">List Car</span>
+                  <a href="/addCar"
+                    class="bg-dark-blue-4 p-2 flex gap-3 text-sm font-bold text-white items-center rounded-sm">
+                    <i data-feather="plus" height="1.25rem"></i>
+                    <span>Add New Car</span>
+                  </a>
+                </div>
+
+                <!-- filter -->
+                <div class="flex gap-3 text-sm font-bold">
+                  <span
+                    class="bg-dark-blue-1 px-2 py-1 border border-dark-blue-4 rounded-sm text-dark-blue-4">All</span>
+                  <span class="bg-white px-2 py-1 border border-dark-blue-2 rounded-sm text-dark-blue-2">Small</span>
+                  <span class="bg-white px-2 py-1 border border-dark-blue-2 rounded-sm text-dark-blue-2">Medium</span>
+                  <span class="bg-white px-2 py-1 border border-dark-blue-2 rounded-sm text-dark-blue-2">Large</span>
+                </div>
+
+                <!-- list car -->
+                <div class="grid grid-cols-3 gap-5" id="cars-container">
+
+                </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- alerts -->
+      <div id="alert" class="alert hidden">
+        Data berhasil disimpan!
+      </div>
+
+      <%- include('partials/deletePopup') %>
+  </div>
+  <script src="/javascripts/listCar.js"></script>
+</body>
+
+</html>

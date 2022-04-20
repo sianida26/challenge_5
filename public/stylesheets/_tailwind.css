@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+    input, select {
+        @apply focus:outline-none;
+    }
+
+    .alert {
+        @apply fixed font-semibold text-white top-24 right-1/2 px-12 py-2 z-50 transform translate-x-1/2;
+        box-shadow : 0px 4px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .car-card {
+        @apply flex items-center justify-center bg-white rounded-md shadow-md p-5;
+    }
+}
